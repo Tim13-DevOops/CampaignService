@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="campaign_service-app",  # TODO
+    name="campaign_service-app",  
     version="0.1.0",
     description="Setting up a python package",
     author="Branislav Andjelic, Dusan Milunovic",
@@ -19,6 +19,8 @@ setup(
         "flask-sqlalchemy",
         "flask-jwt-extended",
         "prometheus-flask-exporter",
+        "requests-mock",
+        "requests",
         "bcrypt",
         "flask",
     ],

@@ -17,7 +17,7 @@ app.config["SECRET_KEY"] = config.FLASK_SECRET_KEY
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 
-cors = CORS(app, resources={r"/*": {"origins": "localhost"}})
+cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 api = CustomApi(app)
 db = init_database(app)
@@ -26,11 +26,12 @@ metrics = RESTfulPrometheusMetrics(app, api)
 from app.rbac import rbac
 rbac.setJWTManager(app)
 
-@app.route('/')
-def hello():
-    return jsonify({'message': 'Hello world'})
 
+from app.api.campaign_api import CampaignAPI
+from app.api.advertisement_api import AdvertisementAPI
 
+api.add_resource(CampaignAPI, "/campaign")
+api.add_resource(AdvertisementAPI, "/advertisement")
 migrate = Migrate(app, db)
 
 from app.prometheus_metrics.prometheus_metrics import (

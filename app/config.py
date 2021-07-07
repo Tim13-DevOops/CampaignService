@@ -7,3 +7,5 @@ SQL_PASSWORD = os.environ["SQL_PASSWORD"]
 SQL_DB_NAME = os.environ["SQL_DB_NAME"]
 FLASK_SECRET_KEY = os.environ["FLASK_SECRET_KEY"]
 SECRET_KEY = os.environ["JWT_SECRET_KEY"]
+
+POST_SERVICE_URL = "http://api_gateway:8000/post"
